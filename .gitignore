@@ -7,3 +7,4 @@
 /output_fft_loss
 /test.png
 /wandb
+model/dummy.py
