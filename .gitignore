@@ -8,3 +8,7 @@
 /test.png
 /wandb
 model/dummy.py
+model/__pycache__/__init__.cpython-36.pyc
+model/__pycache__/acer_spectral.cpython-36.pyc
+model/__pycache__/upsampler.cpython-36.pyc
+model/__pycache__/__init__.cpython-36.pyc
