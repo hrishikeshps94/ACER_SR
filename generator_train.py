@@ -5,7 +5,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 import wandb
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from model.test_model import SR
+from model.acer_spectral import SR
 from dataset import TrainDataset, ValidDataset
 from globals import *
 from run_utils import get_model_summary
@@ -36,7 +36,7 @@ class Train():
 
     def init_model_for_training(self):
         self.generator = SR(3,3)
-        print(get_model_summary(self.generator,(3,TRAINING_CROP_SIZE//2,TRAINING_CROP_SIZE//2)))
+        # print(get_model_summary(self.generator,(3,TRAINING_CROP_SIZE//2,TRAINING_CROP_SIZE//2)))
         self.generator = self.generator.to(device)
     def init_optimizer(self):
         self.optimizer = torch.optim.Adam(self.generator.parameters(), lr=TRAINING_LEARNING_RATE)
@@ -88,7 +88,7 @@ class Train():
         print(f'Training started from epoch = {self.global_step}/{max_step}')
         while self.global_step < max_step:
             self.generator_training_epoch()
-            # self.generator_validation_epoch()
+            self.generator_validation_epoch()
 
 
     def generator_training_epoch(self):
